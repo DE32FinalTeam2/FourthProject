@@ -13,7 +13,7 @@ spec:
         app: java-app
     spec:
       containers:
-        - name: java-app
+        - name: test-for-team2
           image: esthercho7/blog:team2 
           ports:
           - containerPort: 8080
@@ -33,7 +33,7 @@ metadata:
   name: java-service
 spec:
   selector:
-    app: java-app
+    app: test-for-team2 
   ports:
   - protocol: TCP
     port: 8080
