@@ -24,9 +24,9 @@ with st.form(key='my_form'):
     with col2:
         stop_button = st.form_submit_button(label='Auto scale Stop')
     with col3:
-        rerun_button = st.form_submit_button(label='View Current Dockers')
-    with col4:
         log_button = st.form_submit_button(label='log path')
+    with col4:
+        rerun_button = st.form_submit_button(label='View Current Dockers')
     if start_button:
         startApp()
         st.write("Auto scale has started.")

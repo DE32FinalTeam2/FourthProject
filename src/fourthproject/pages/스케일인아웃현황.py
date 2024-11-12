@@ -7,11 +7,11 @@ import os
 from k1s.autoscale import wherelog
 
 st.set_page_config(
-    page_title="scale in/out 관리자 페이지 2",
+    page_title="scale in/out 관리자 페이지 3",
     page_icon="👋",
 )
 
-st.write("도커 및 자원 사용량 현황👋")
+st.write("스케일 인 아웃 현황👋")
 
 log_path=wherelog()
 
@@ -26,21 +26,12 @@ if os.path.exists(log_path):
     # 'scaleIO' 컬럼에 따라 데이터 분리
     Ispot = df[df['scaleIO'] == "I"]
     Ospot = df[df['scaleIO'] == "O"]
+    
+    st.write("scale in ")
+    st.dataframe(Ispot)
+    st.write("scale out")
+    st.dataframe(Ospot)
 
-    # 그래프 생성
-    flg = plt.figure()
-    plt.plot(df['time'], df['CPUuses'], data=df)  # CPU 사용량에 대한 선 그래프
-    plt.scatter(x=Ispot['time'], y=Ispot['CPUuses'], marker='o', color="red", label='scale in ')  # scale in 점 표시
-    plt.scatter(x=Ospot['time'], y=Ospot['CPUuses'], marker='s', color="green", label='scale out')  # scale out 점 표시
-
-    # 범례 추가
-    plt.legend(loc='lower left')
-
-    # x축 눈금 회전
-    plt.xticks(rotation=45)
-
-    # Streamlit에서 그래프 출력
-    st.pyplot(flg)
 else : 
     st.write("아직 로그가 없습니다.")
 
