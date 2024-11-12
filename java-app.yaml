@@ -6,24 +6,18 @@ spec:
   #replicas: 1
   selector:
     matchLabels:
-      app: java-app
+      app: test-for-team2
   template:
     metadata:
       labels:
-        app: java-app
+        app: test-for-team2 
     spec:
       containers:
         - name: test-for-team2
           image: esthercho7/blog:team2 
           ports:
           - containerPort: 8080
-          resources:
-            requests:
-              cpu: 0.1m
-              memory: 10Mi
-            limits:
-              cpu: 1m
-              memory: 60Mi
+          command: ["java", "-jar", "/app.jar"]
 
 
 ---
