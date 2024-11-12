@@ -3,3 +3,5 @@ pytz>=2024.2
 PyYAML>=6.0.2
 streamlit>=1.39.0
 matplotlib>=3.9.2
+seaborn>=0.13.2
+numpy>=2.1.3
