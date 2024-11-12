@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Load Test Page</title>
+  <script>
+    function startLoadTest() {
+      setInterval(() => {
+        fetch('/').then(response => {
+          console.log('Request sent at', new Date().toISOString());
+        }).catch(err => {
+          console.error('Error in request', err);
+        });
+      }, 100);  // 100ms 간격으로 요청
+    }
+
+    window.onload = startLoadTest;
+  </script>
+</head>
+<body>
+  <h1>Esther's page</h1>
+  <p>Test page for loading.</p>
+</body>
+</html>
