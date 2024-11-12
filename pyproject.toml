@@ -13,7 +13,7 @@ dependencies = [
     "matplotlib>=3.9.2",
     "seaborn>=0.13.2",
     "numpy>=2.1.3",
-    "swautoscale @ git+https://github.com/GITSangWoo/k1s.git@0.4/streamlit",
+    "swautoscale>=0.2.0",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"

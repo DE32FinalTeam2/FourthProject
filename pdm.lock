@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:d99f22f465dc2b9a9157d831c92ce03109abf11b8519d194ba23f8dacb5fb4f4"
+content_hash = "sha256:cf5c879cdf3cc48a73b22d6a61dc91dc460c00bf5086045f42a9c82774ccaacd"
 
 [[metadata.targets]]
 requires_python = "==3.11.*"
@@ -713,16 +713,16 @@ files = [
 name = "swautoscale"
 version = "0.2.0"
 requires_python = "==3.11.*"
-git = "https://github.com/GITSangWoo/k1s.git"
-ref = "0.4/streamlit"
-revision = "4c4bc5e5d2f830dc1cf9c321f9d0d62b16e176e4"
 summary = "Default template for PDM package"
 groups = ["default"]
 dependencies = [
     "PyYAML>=6.0.2",
     "pytz>=2024.2",
     "requests>=2.32.3",
-    "streamlit>=1.39.0",
+]
+files = [
+    {file = "swautoscale-0.2.0-py3-none-any.whl", hash = "sha256:8b4c72cd721eb44081244da05dfe04781964a168e85ba3cf805a5ae3c5241fa2"},
+    {file = "swautoscale-0.2.0.tar.gz", hash = "sha256:6c00881793e14cd31ecfe540cfb9d255a939ad7b54e3069ed0bdb3ee964b41cb"},
 ]
 
 [[package]]

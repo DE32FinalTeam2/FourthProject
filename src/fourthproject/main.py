@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import os
-from fourthproject.autoscale import checkAll,main,stopApp,startApp,scalein,scaleout,wherelog
+from autoscale import checkAll,main,stopApp,startApp,scalein,scaleout,wherelog
 
 st.set_page_config(
     page_title="scale in/out 관리자 메인 페이지 ",
