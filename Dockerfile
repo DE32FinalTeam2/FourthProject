@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
 COPY  ./requirements.txt /code/requirements.txt
 
 COPY  src/fourthproject/main.py /code/
+COPY  src/fourthproject/autoscale.py /code/
+COPY  src/fourthproject/docker-compose.yml /code/
 
 COPY  src/fourthproject/pages/ /code/pages/
 
