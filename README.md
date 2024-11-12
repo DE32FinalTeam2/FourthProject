@@ -21,9 +21,6 @@
 ![linux](https://img.shields.io/badge/linux-black?style=for-the-badge&logo=linux)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
-
-<br/>
-
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
 ![Exporter](https://img.shields.io/badge/Exporter-000000?style=for-the-badge&logo=linux&logoColor=white)
