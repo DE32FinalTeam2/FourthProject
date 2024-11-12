@@ -13,25 +13,28 @@ st.set_page_config(
 
 st.write("스케일 인/아웃 관리 페이지👋")
 
-wherelog()
 result0,result1,result2 = checkAll()
 
 with st.form(key='my_form'):
     st.write("시간:",result0,"총 컨테이너 수:",result1, "CPU 총 사용량:",result2)
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
         start_button = st.form_submit_button(label='Auto scale Start')
     with col2:
         stop_button = st.form_submit_button(label='Auto scale Stop')
     with col3:
         rerun_button = st.form_submit_button(label='View Current Dockers')
+    with col4:
+        log_button = st.form_submit_button(label='log path')
     if start_button:
         startApp()
         st.write("Auto scale has started.")
     if stop_button:
         stopApp()
         st.write("Auto scale has stopped.")
+    if log_button:
+        st.write("log exist in ",wherelog())
     if rerun_button:
         st.write("Review Current Dockers")
         #result0,result1,result2 = checkAll()
