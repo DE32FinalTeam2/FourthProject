@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:dbfc7c91a66163f5cc749afa6a53344c162c182cd1bee1927e52defa2f032c0b"
+content_hash = "sha256:d99f22f465dc2b9a9157d831c92ce03109abf11b8519d194ba23f8dacb5fb4f4"
 
 [[metadata.targets]]
 requires_python = "==3.11.*"
@@ -707,6 +707,22 @@ dependencies = [
 files = [
     {file = "streamlit-1.40.1-py2.py3-none-any.whl", hash = "sha256:b9d7a317a0cc88edd7857c7e07dde9cf95647d3ae51cbfa8a3db82fbb8a2990d"},
     {file = "streamlit-1.40.1.tar.gz", hash = "sha256:1f2b09f04b6ad366a2c7b4d48104697d1c8bc33f48bdf7ed939cc04c12d3aec6"},
+]
+
+[[package]]
+name = "swautoscale"
+version = "0.2.0"
+requires_python = "==3.11.*"
+git = "https://github.com/GITSangWoo/k1s.git"
+ref = "0.4/streamlit"
+revision = "4c4bc5e5d2f830dc1cf9c321f9d0d62b16e176e4"
+summary = "Default template for PDM package"
+groups = ["default"]
+dependencies = [
+    "PyYAML>=6.0.2",
+    "pytz>=2024.2",
+    "requests>=2.32.3",
+    "streamlit>=1.39.0",
 ]
 
 [[package]]
