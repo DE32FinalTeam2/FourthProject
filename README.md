@@ -159,7 +159,17 @@ Step.2 (최종 프로젝트 환경 구성)
 
 ### ✅테스트 결과
 ---
+#### 도커 CPU 사용량 및 Scale In/Out 이벤트 그래프
+![image](https://github.com/user-attachments/assets/6eddf721-e43e-42a6-ae4a-611c898671ab)
 
+#### Blog/Exporter CPU 사용량 그래프
+![image](https://github.com/user-attachments/assets/f1e68337-2fe4-455c-995e-8bb4b0a8acec)
+
+#### Blog/Exporter 네트워크 대역폭 사용량 그래프
+![image](https://github.com/user-attachments/assets/89fee6a8-c9cd-4f3c-a0ed-b5f75c83c0dc)
+
+#### 자동 및 수동 Scale In/Out 관리 페이지
+![image](https://github.com/user-attachments/assets/a8e05d27-193c-4bf0-9d2d-80621262c06a)
 <br/>
 
 ## ⌨트러블 슈팅 및 PR
