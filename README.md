@@ -316,7 +316,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>KEEP</summary>
 <div>
 <figure align="center">
-  <p></p>
+   <p>분업이 잘된 느낌이고 공유가 잘됐다.</p>
  </figure>
 </div>
 </details>
@@ -325,7 +325,8 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>PROBLEM</summary>
 <div>
 <figure align="center">
-  <p></p>
+  <p>spark 등 툴에 대한 정확한 이해도가 부족해서 트러블 슈팅시간이 좀 걸렸다.</p>
+  <p>전반적으로 학습이 더 필요하다는 느낌을 많이 받았다.</p>
  </figure>
 </div>
 </details>
@@ -334,7 +335,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>TRY</summary>
 <div>
 <figure align="center">
-  <p></p>
+  <p>전체적인 아키텍처를 사용하고자 하는 기술을 더해 구상할 수 있는 능력을 많이 길러야겠다.</p>
  </figure>
 </div>
 </details>
