@@ -21,14 +21,14 @@
 ![linux](https://img.shields.io/badge/linux-black?style=for-the-badge&logo=linux)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
-
-<br>
-
-![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
-![Exporter](https://img.shields.io/badge/Exporter-000000?style=for-the-badge&logo=linux&logoColor=white)
 ![Apache Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=for-the-badge&logo=apache-spark&logoColor=white)
 ![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-017E9A?style=for-the-badge&logo=apache-airflow&logoColor=white)
+
+<br>
+ 
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Exporter](https://img.shields.io/badge/Exporter-000000?style=for-the-badge&logo=linux&logoColor=white)
 
 <br/>
 
@@ -154,6 +154,39 @@ Step.2 (최종 프로젝트 환경 구성)
 
 ### 🌐환경 구성
 ---
+#### Team_repository clone
+```bash
+$ git clone git@github.com:DE32FinalTeam2/FourthProject.git
+```
+
+#### Node-Exporter/Prometheus/Grafana 실행
+```bash
+# 해당 docker-compose.yaml이 있는 디렉토리로 이동
+# FourthProject 기준
+$ cd moni
+$ docker compose up -d
+```
+
+#### Blog/Load_Balancer 실행
+```bash
+# 해당 docker-compose.yaml이 있는 디렉토리로 이동
+# FourthProject 기준
+$ cd src/fourthproject
+$ docker compose up -d
+```
+
+#### 그 이후 진행사항
+```bash 
+# FourthProject 기준
+$ pip install .
+
+$ streamlit run src/fourthproject/main.py
+```
+
+### 번외/테스트
+```bash
+# 부하 테스트
+$ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:8949/
 
 <br/>
 
