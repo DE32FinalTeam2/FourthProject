@@ -1,65 +1,86 @@
+import time
+import requests
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-import os
-from k1s.autoscale import wherelog
 
-st.set_page_config(
-    page_title="scale in/out 관리자 페이지 2",
-    page_icon="👋",
-)
+# Prometheus 서버 URL
+PROMETHEUS_URL = "http://localhost:9090"
 
-st.write("도커 및 자원 사용량 현황👋")
+# Prometheus에서 메트릭을 쿼리하는 함수
+def query_prometheus(query):
+    # 쿼리를 URL 파라미터로 Prometheus API 호출
+    response = requests.get(f"{PROMETHEUS_URL}/api/v1/query", params={'query': query})
+    
+    if response.status_code == 200:
+        result = response.json()['data']['result']
+        if result:
+            return float(result[0]['value'][1])  # 첫 번째 결과의 값 반환
+    else:
+        st.error(f"프로메테우스 서버로 데이터를 가져오는데 실패했습니다. 응답 코드: {response.status_code}")
+        return None
 
-log_path=wherelog()
+# Streamlit 대시보드 설정
+st.title("Real-Time System Metrics Dashboard")
 
-# if 문 안으로 전체 코드 이동
-if os.path.exists(log_path):
-    # CSV 파일을 읽어서 DataFrame 생성
-    df = pd.read_csv(log_path)
+# 실시간 업데이트용 빈 공간 - 여기에 차트가 계속 불러와지는 느낌
+st.header("CPU 사용량 그래프")
+cpu_placeholder = st.empty()
+#st.header("메모리 사용량 그래프")
+#memory_placeholder = st.empty()
+st.header("네트워크 대역폭 사용량 그래프 (100MB/s 기준)")
+network_placeholder = st.empty()
 
-    # 필요한 컬럼만 선택
-    cdf = df[['time', 'CPUuses']]
+# 데이터 리스트
+#cpu_data, memory_data, network_data, time_data = [], [], [], []
+cpu_data, network_data, time_data = [], [], []
 
-    # 'scaleIO' 컬럼에 따라 데이터 분리
-    Ispot = df[df['scaleIO'] == "I"]
-    Ospot = df[df['scaleIO'] == "O"]
+# 주기적으로 metric을 갱신하는 함수
+def collect_metrics():
+    while True:
+        # 현재 시각 추가
+        current_time = pd.Timestamp.now()
+        time_data.append(current_time)
 
-    # 그래프 생성
-    flg = plt.figure()
-    plt.plot(df['time'], df['CPUuses'], data=df)  # CPU 사용량에 대한 선 그래프
-    plt.scatter(x=Ispot['time'], y=Ispot['CPUuses'], marker='o', color="red", label='scale in ')  # scale in 점 표시
-    plt.scatter(x=Ospot['time'], y=Ospot['CPUuses'], marker='s', color="green", label='scale out')  # scale out 점 표시
+        # CPU 사용률 쿼리
+        cpu_query = 'rate(process_cpu_seconds_total[1m]) * 100'
+        cpu_usage = query_prometheus(cpu_query)
+        if cpu_usage is not None:
+            cpu_data.append(cpu_usage)
 
-    # 범례 추가
-    plt.legend(loc='lower left')
+        # 메모리 사용률 쿼리
+       # memory_query = '(process_virtual_memory_bytes / process_virtual_memory_max_bytes) * 100'
+       # memory_usage = query_prometheus(memory_query)
+       # if memory_usage is not None:
+       #     memory_data.append(memory_usage)
 
-    # x축 눈금 회전
-    plt.xticks(rotation=45)
+        # 네트워크 대역폭 사용률 계산
+        network_query = '(rate(process_network_receive_bytes_total[1m]) + rate(process_network_transmit_bytes_total[1m])) / (100 * 1024 * 1024) * 100'
+        network_usage = query_prometheus(network_query)
+        if network_usage is not None:
+            network_data.append(network_usage)
 
-    # Streamlit에서 그래프 출력
-    st.pyplot(flg)
-else : 
-    st.write("아직 로그가 없습니다.")
+        # 데이터프레임 생성
+        data = {
+            "Time": time_data,
+            "CPU Usage (%)": cpu_data,
+        #    "Memory Usage (%)": memory_data,
+            "Network Bandwidth Usage (%)": network_data
+        }
+        df = pd.DataFrame(data)
 
-#if os.path.exists(log_path):
-#df = pd.read_csv(log_path)
-#cdf = df[['time','CPUuses']]
-#Ispot = df[df['scaleIO']=="I"]
-#Ospot = df[df['scaleIO']=="O"]
-#st.dataframe(Ispot)
-#st.dataframe(Ospot)
-#st.write(df.columns)
+        # 실시간 차트 업데이트
+        with cpu_placeholder.container():
+            st.line_chart(df, x="Time", y="CPU Usage (%)", use_container_width=True)
 
-#flg = plt.figure()
-#plt.plot(df['time'],df['CPUuses'],data=df)
-#plt.scatter(x=Ispot['time'], y=Ispot['CPUuses'],marker='o',color="red",label='scale in ')
-#plt.scatter(x=Ospot['time'], y=Ospot['CPUuses'],marker='s',color="green",label='scale out')
-#plt.legend(loc='lower left')
+        #with memory_placeholder.container():
+        #    st.line_chart(df, x="Time", y="Memory Usage (%)", use_container_width=True)
 
-#plt.xticks(rotation=45)
-#st.pyplot(flg)
+        with network_placeholder.container():
+            st.line_chart(df, x="Time", y="Network Bandwidth Usage (%)", use_container_width=True)
 
+        time.sleep(1)  # 1초마다 갱신
+
+if __name__ == "__main__":
+    print("시스템의 사용량관련 metric 수집을 시작합니다...")
+    collect_metrics()
 

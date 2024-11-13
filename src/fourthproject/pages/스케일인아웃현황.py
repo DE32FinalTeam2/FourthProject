@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import os
-from k1s.autoscale import wherelog
+from fourthproject.autoscale import wherelog
 
 st.set_page_config(
     page_title="scale in/out 관리자 페이지 2",
@@ -14,6 +14,7 @@ st.set_page_config(
 st.write("도커 및 자원 사용량 현황👋")
 
 log_path=wherelog()
+print(log_path)
 
 # if 문 안으로 전체 코드 이동
 if os.path.exists(log_path):

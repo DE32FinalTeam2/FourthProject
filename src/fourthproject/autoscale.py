@@ -108,7 +108,6 @@ file_path = __file__
 directory = os.path.dirname(file_path)
 log_path = os.path.join(directory, "dockerlog.log")
 yml_path = os.path.join(directory, "docker-compose.yml")
-
 if not os.path.exists(directory):
    os.makedirs(directory)
 
