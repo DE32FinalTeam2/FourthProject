@@ -13,7 +13,7 @@ def scalein(num):
     # num = int(sys.argv[1])
     log_path = wherelog()
     print(log_path)
-    blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep samdul-blog | wc -l"])
+    blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep sangwoo-blog | wc -l"])
     blogcountj = int(blogcount.decode("utf-8").strip())
     local_time = datetime.now(timezone)
     formatted_time = local_time.strftime("%Y-%m-%d %H:%M:%S")
@@ -27,7 +27,7 @@ def scalein(num):
 def scaleout(num):
     # num = int(sys.argv[1])
     log_path = wherelog()
-    blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep samdul-blog | wc -l"])
+    blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep sangwoo-blog | wc -l"])
     blogcountj = int(blogcount.decode("utf-8").strip())
     local_time = datetime.now(timezone)
     formatted_time = local_time.strftime("%Y-%m-%d %H:%M:%S")
@@ -62,7 +62,7 @@ def checkCPU(num):
     return statusCPU, round(sum(CPUchecklist), 2)
 
 def checkAll():
-    blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep samdul-blog | wc -l"])
+    blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep sangwoo-blog | wc -l"])
     blogcountj = int(blogcount.decode("utf-8").strip())
     local_time = datetime.now(timezone)
     formatted_time = local_time.strftime("%Y-%m-%d %H:%M:%S")
@@ -128,7 +128,7 @@ def main():
             time.sleep(5)
             if stop_flag:
                 break; 
-            blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep samdul-blog | wc -l"])
+            blogcount = subprocess.check_output(["bash", "-c", "docker stats --no-stream | grep sangwoo-blog | wc -l"])
             blogcountj = int(blogcount.decode("utf-8").strip())
             local_time = datetime.now(timezone)
             formatted_time = local_time.strftime("%Y-%m-%d %H:%M:%S")
