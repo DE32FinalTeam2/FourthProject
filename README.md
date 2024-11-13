@@ -187,6 +187,7 @@ $ streamlit run src/fourthproject/main.py
 ```bash
 # 부하 테스트
 $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:8949/
+```
 
 <br/>
 
