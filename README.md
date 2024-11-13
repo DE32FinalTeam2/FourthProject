@@ -67,14 +67,14 @@
 > Kubernetes에서 Prometheus와 Grafana를 사용하여 Docker 웹 서버의 CPU 사용량을 모니터링하고, 자동 및 수동 스케일링을 통해 부하에 유연하게 대응하는 시스템 구축.
 
 **[구성요소]**
-Step.1 (요구사항)
+- Step.1 (요구사항)
 > **Docker 웹 서버**: CPU 부하를 발생시킬 웹 서버 Docker 컨테이너
 > **Node Exporter**: Docker 컨테이너의 CPU 정보를 받아오기 위한 Exporter
 > **Prometheus**: Kubernetes 클러스터와 애플리케이션의 메트릭 수집
 > **Grafana**: Prometheus 메트릭을 기반으로 시각화 및 모니터링
 > **Streamlit 관리자 페이지**: 예상 부하 증가 시 수동 스케일링을 지원하는 관리 기능
 
-Step.2 (최종 프로젝트 환경 구성)
+- Step.2 (최종 프로젝트 환경 구성)
 > **AirFlow**: 파이널 프로젝트에서 크롤링 한 데이터를 ETL 하기 위한 프레임 워크
 > **Spark**: 파이널 프로젝트에서 생길 대용량 데이터를 병렬 처리 하기 위한 프레임 워크 
 > **Spark 모니터링**: Grafana를 활용한 Spark 모니터링
@@ -249,7 +249,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>KEEP</summary>
 <div>
 <figure align="center">
-  <p></p>
+  <p>목표와 해야할 일을 정해놓고 분업화가 원할하게 된 것</p>
  </figure>
 </div>
 </details>
@@ -258,7 +258,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>PROBELM</summary>
 <div>
 <figure align="center">
-  <p></p>
+  <p>프로메테우스나 exporter에 대한 이해가 부족해 팀원이 자신이 한 일을 설명해주어도 이해하는데 시간이 걸림</p>
  </figure>
 </div>
 </details>
@@ -267,7 +267,8 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>TRY</summary>
 <div>
 <figure align="center">
-  <p></p>
+  <p>컨테이너의 메모리 사용률이나 컨테이너의 네트워크 대역폭을 읽어올 수 있는 방법이 있다고 생각함.</p>
+  <p>단순히 네트워크 대역폭 최대치나 메모리 용량 metric을 상수로 받아오는 것 보다는 컨테이너의 각 리소스 metric을 실제로 읽어오는 방식을 시도하고 싶음</p>
  </figure>
 </div>
 </details>
@@ -277,9 +278,9 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>KEEP</summary>
 <div>
 <figure align="center">
-  <p></p>
-  <p></p>
-  <p></p>
+  <p>1. 저번 프로젝트 보다 공유도 잘되고 분업도 잘된것 같다.</p>
+  <p>2. 프로젝트를 진행하는 중에 JAM이 걸리지 않아서 프로젝트 완성속도나 프로세스 진행면에서 발전된 형태를 보였다.</p>
+  <p>3. 최종 프로젝트를 대비해서 미리 체험해봐야할 오류를 경험한 듯한 느낌이다 .</p>
  </figure>
 </div>
 </details>
@@ -288,8 +289,8 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>PROBLEM</summary>
 <div>
 <figure align="center">
-  <p></p>
-  <p></p>
+  <p>1. 내가 일에 참여한 시간에 비해서 내 퍼포먼스가 좀 별로였다.</p>
+  <p>2. 아직 새로운 영역의 기술을 사용하거나 기존 사용하던 기술에 조금 더 발전된 테크닉을 적용시키는데 어려움이 있는 것 같다.</p>
  </figure>
 </div>
 </details>
@@ -298,7 +299,8 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>TRY</summary>
 <div>
 <figure align="center">
-  <p></p>
+  <p>1. 사람이 빠져도 진행될 수 있는 팀을 구현하기 위해서 일정을 프로젝트 적용 (기술 + 태스크) 병렬형태로 짜봤으면 좋겠다.</p>
+  <p>업무 진행상황, 어려움을 겪고있는 상황이나 진행이 잘 되지 않는 상황을 ISSUE로 적극적으로 공유해봤으면 좋겠다.</p>
  </figure>
 </div>
 </details>
