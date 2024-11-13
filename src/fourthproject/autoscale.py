@@ -41,7 +41,7 @@ def scaleout(num):
 
 # yaml파일 읽어와서 CPU 사용율 X% 구하기
 def readlimit():
-    with open('./docker-compose.yml') as f:
+    with open(yml_path) as f:
         file = yaml.full_load(f)
     cpus_limit = float(file['services']['blog']['deploy']['resources']['limits']['cpus']) * 100
     #print(cpus_limit)
@@ -52,7 +52,7 @@ def checkCPU(num):
     CPUchecklist = []
     statusCPU = "stable"
     for i in range(1, num + 1):
-        r = subprocess.check_output(["docker", "stats", f"samdul-blog-{i}", "--no-stream", "--format", "{{json .}}"])
+        r = subprocess.check_output(["docker", "stats", f"sangwoo-blog-{i}", "--no-stream", "--format", "{{json .}}"])
         j = json.loads(r.decode("utf-8"))
         CPUchecklist.append(float(j['CPUPerc'].strip('%')))
 
@@ -107,6 +107,7 @@ def wherelog():
 file_path = __file__
 directory = os.path.dirname(file_path)
 log_path = os.path.join(directory, "dockerlog.log")
+yml_path = os.path.join(directory, "docker-compose.yml")
 
 if not os.path.exists(directory):
    os.makedirs(directory)
