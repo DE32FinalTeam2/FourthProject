@@ -19,7 +19,8 @@ def scalein(num):
     formatted_time = local_time.strftime("%Y-%m-%d %H:%M:%S")
     _, result2 = checkCPU(blogcountj)
     cntdocker = blogcountj - int(num)
-    subprocess.run(['docker', 'compose', 'up', '-d', '--scale', f'blog={cntdocker}'])
+    subprocess.run(['docker', 'compose', '-f', f'{yml_path}','up', '-d', '--scale', f'blog={cntdocker}'])
+    # subprocess.run(['docker', 'compose', 'up', '-d', '--scale', f'blog={cntdocker}'])
     line_message("scale in")
     with open(log_path, "a", encoding="utf-8", newline='') as f:
         f.write(f"{formatted_time},{result2},I\n")
@@ -33,7 +34,8 @@ def scaleout(num):
     formatted_time = local_time.strftime("%Y-%m-%d %H:%M:%S")
     _, result2 = checkCPU(blogcountj)
     cntdocker = blogcountj + int(num)
-    subprocess.run(['docker', 'compose', 'up', '-d', '--scale', f'blog={cntdocker}'])
+    subprocess.run(['docker', 'compose', '-f', f'{yml_path}','up', '-d', '--scale', f'blog={cntdocker}'])
+    # subprocess.run(['docker', 'compose', 'up', '-d', '--scale', f'blog={cntdocker}'])
     line_message("scale out")
     with open(log_path, "a", encoding="utf-8", newline='') as f:
         f.write(f"{formatted_time},{result2},O\n")
@@ -142,7 +144,7 @@ def main():
 
                 if (warningcnt == 6) and (blogcountj < 30):
                     cntdocker = (blogcountj * 2) + 1
-                    subprocess.run(['docker', 'compose', 'up', '-d', '--scale', f'blog={cntdocker}'])
+                    subprocess.run(['docker', 'compose', '-f', f'{yml_path}','up', '-d', '--scale', f'blog={cntdocker}'])
                     line_message("scale out")
                     with open(log_path, "a", encoding="utf-8", newline='') as f:
                         f.write(f"{formatted_time},{result2},O\n")
@@ -152,7 +154,7 @@ def main():
                     print("경고! 가용 자원이 부족합니다")
                     nomore = 1
                     cntdocker = (blogcountj * 2) + 1
-                    subprocess.run(['docker', 'compose', 'up', '-d', '--scale', f'blog={cntdocker}'])
+                    subprocess.run(['docker', 'compose', '-f', f'{yml_path}','up', '-d', '--scale', f'blog={cntdocker}'])
                     line_message("scale out")
                     with open(log_path, "a", encoding="utf-8", newline='') as f:
                         f.write(f"{formatted_time},{result2},O\n")
@@ -174,7 +176,7 @@ def main():
 
                 if stablecnt == 6:
                     cntdocker -= 1
-                    subprocess.run(['docker', 'compose', 'up', '-d', '--scale', f'blog={cntdocker}'])
+                    subprocess.run(['docker', 'compose', '-f', f'{yml_path}','up', '-d', '--scale', f'blog={cntdocker}'])
                     line_message("scale in")
                     with open(log_path, "a", encoding="utf-8", newline='') as f:
                         f.write(f"{formatted_time},{result2},I\n")
