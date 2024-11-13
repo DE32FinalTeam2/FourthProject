@@ -58,7 +58,7 @@
 이 프로젝트는 Kubernetes와 Docker를 활용하여 웹 서버의 CPU 사용량을 실시간으로 모니터링하고, 부하 발생 시 서버가 자동으로 스케일링하도록 구성하는 것이 목표입니다.
 또한, 예상 부하 증가 시 관리자 페이지를 통해 수동으로 서버를 확장할 수 있는 기능을 제공합니다.
 
-### + 추가 기능
+> **추가 기능**
 
 파이널 프로젝트를 대비해 추후 설계될 구조를 시뮬레이션 할 수 있게 구현하였다.
 
@@ -69,14 +69,14 @@
 > Kubernetes에서 Prometheus와 Grafana를 사용하여 Docker 웹 서버의 CPU 사용량을 모니터링하고, 자동 및 수동 스케일링을 통해 부하에 유연하게 대응하는 시스템 구축.
 
 **[구성요소]**
-- Step.1 (요구사항)
+> - Step.1 (요구사항)
 > **Docker 웹 서버**: CPU 부하를 발생시킬 웹 서버 Docker 컨테이너
 > **Node Exporter**: Docker 컨테이너의 CPU 정보를 받아오기 위한 Exporter
 > **Prometheus**: Kubernetes 클러스터와 애플리케이션의 메트릭 수집
 > **Grafana**: Prometheus 메트릭을 기반으로 시각화 및 모니터링
 > **Streamlit 관리자 페이지**: 예상 부하 증가 시 수동 스케일링을 지원하는 관리 기능
 
-- Step.2 (최종 프로젝트 환경 구성)
+> - Step.2 (최종 프로젝트 환경 구성)
 > **AirFlow**: 파이널 프로젝트에서 크롤링 한 데이터를 ETL 하기 위한 프레임 워크
 > **Spark**: 파이널 프로젝트에서 생길 대용량 데이터를 병렬 처리 하기 위한 프레임 워크 
 > **Spark 모니터링**: Grafana를 활용한 Spark 모니터링
@@ -209,10 +209,10 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <br/>
 
 ## ⌨트러블 슈팅 및 PR
-- [[Dev 0.1.0] 우선 구현해야 할거 정리 #1](https://github.com/DE32FinalTeam2/FourthProject/pull/1)
-- [Release 0.1.0 #2](https://github.com/DE32FinalTeam2/FourthProject/pull/2)
-- [Streamlit cpu 사용량, 메모리 사용량, 네트워크 대역폭 사용량 차트 #3](https://github.com/DE32FinalTeam2/FourthProject/pull/3)
-- [1차 작업물 통합하기 #4](https://github.com/DE32FinalTeam2/FourthProject/pull/4)
+- [[Dev 0.1.0] 우선 구현해야 할거 정리](https://github.com/DE32FinalTeam2/FourthProject/pull/1)
+- [Release 0.1.0](https://github.com/DE32FinalTeam2/FourthProject/pull/2)
+- [Streamlit cpu 사용량, 메모리 사용량, 네트워크 대역폭 사용량 차트](https://github.com/DE32FinalTeam2/FourthProject/pull/3)
+- [1차 작업물 통합하기](https://github.com/DE32FinalTeam2/FourthProject/pull/4)
 
 
 <br/>
@@ -224,8 +224,9 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>KEEP</summary>
 <div>
 <figure align="center">
-  <p></p>
-  <p></p>
+  <p>1. 업무 분담이 확실하게 이루어졌다.</p>
+  <p>2. 이전에 수업했던 내용들을 종합하여 복습할 수 있었다.</p>
+  <p>3. 최종 프로젝트에서 설계될 구조를 미리 학습할 수 있었다.</p>
  </figure>
 </div>
 </details>
@@ -234,8 +235,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>PROBLEM</summary>
 <div>
 <figure align="center">
-  <p></p>
-  <p></p>
+  <p>아직 kubenetes, prometheus, exporter에 대한 이해가 부족해서 공부하면서 프로젝트를 진행하려니 시간이 다소 소모되었다.</p>
  </figure>
 </div>
 </details>
@@ -245,8 +245,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <summary>TRY</summary>
 <div>
 <figure align="center">
-  <p></p>
-  <p></p>
+  <p>Grafana를 활용하여 Spark 지표를 모니터링 및 시각화 하도록 개선해야겠다.</p>
  </figure>
 </div>
 </details>
@@ -371,5 +370,27 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 <br/>
 
 ## 🔍최종 검토 및 개선
+
+### 1. **Spark 모니터링 (미완료)**
+
+- **Grafana 대시보드 개선**: Spark 성능 지표 추가 및 대시보드 개선
+- **알림 시스템 설정**: 성능 이상 발생 시 알림 받도록 설정
+- **클러스터 상태 모니터링**: 각 노드 상태 실시간 추적
+
+---
+
+### 2. **Spark Worker Auto Scale Out (미완료)**
+
+- **CPU 사용량에 따른 자동 스케일링 구현**
+- **스케일링 정책 설정**: 임계치 초과 시 스케일 아웃
+- **스케일링 모니터링**: 자동 스케일링 상태 추적
+
+---
+
+### 3. **기타 개선/추가 사항**
+
+- **에러 핸들링 및 로깅 개선**: 장애 시 알림 및 로그 기록
+- **부하 테스트 환경 개선**: 다양한 시나리오 테스트 추가
+- **CI/CD 파이프라인 설정**: 자동 배포 파이프라인 추가
 
 
