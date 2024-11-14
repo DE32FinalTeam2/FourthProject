@@ -11,7 +11,7 @@ st.set_page_config(
     page_icon="👋",
 )
 
-st.write("스케일 인/아웃 관리 페이지👋")
+st.subheader("스케일 인/아웃 관리 페이지👋")
 
 result0,result1,result2 = checkAll()
 
