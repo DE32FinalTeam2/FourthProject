@@ -1,2 +1,2 @@
-recursive-include src *.yaml
+recursive-include src *.yml
 recursive-include src *
