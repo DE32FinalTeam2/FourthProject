@@ -126,8 +126,8 @@
 | **✅ 완료**       | 부하 테스트           | 정상 동작                              |
 | **✅ 완료**       | 데이터 수집 및 변환   | Airflow 도커 실행 완료                  |
 | **✅ 완료**       | 데이터 분산 처리      | Spark 도커 실행 완료                   |
-| **❌ 미완료**     | Spark 모니터링        | Grafana 모니터링 미완료                |
-| **❌ 미완료**     | Spark Worker Auto Scale out | Auto Scale Out 미완료            |
+| **✅ 완료**     | Spark 모니터링        | Grafana 모니터링 완료                |
+| **✅ 완료**     | Spark Worker Manual Scale in/out | Manual Scale In/Out 완료            |
 
 <br/>
 
@@ -153,7 +153,7 @@
 
 ### 🏗️시스템 아키텍처
 ---
-![image](https://github.com/user-attachments/assets/93e31f6f-5e83-46f6-bb69-e7b17c1d8c1b)
+![image](https://github.com/user-attachments/assets/5d35abed-b4a5-4c5f-aee8-60cdabac13ae)
 
 <br/>
 
@@ -164,19 +164,28 @@
 $ git clone git@github.com:DE32FinalTeam2/FourthProject.git
 ```
 
-#### Node-Exporter/Prometheus/Grafana 실행
+### Airflow 실행
+```bash
+$ cd airflow
+$ docker compose up -d
+```
+
+### minikube 실행
+```bash
+$ minikube start
+```
+
+### java 웹 실행
+```bash
+$ kubectl apply -f java-deployment.yaml
+$ minikube service java-service --url
+```
+
+#### Spark/Exporter/Prometheus/Grafana 실행
 ```bash
 # 해당 docker-compose.yaml이 있는 디렉토리로 이동
 # FourthProject 기준
 $ cd moni
-$ docker compose up -d
-```
-
-#### Blog/Load_Balancer 실행
-```bash
-# 해당 docker-compose.yaml이 있는 디렉토리로 이동
-# FourthProject 기준
-$ cd src/fourthproject
 $ docker compose up -d
 ```
 
@@ -186,6 +195,8 @@ $ docker compose up -d
 $ pip install .
 
 $ streamlit run src/fourthproject/main.py
+# streamlit web 접속 (http://localhost:8501)
+# manual scale In/Out
 ```
 
 ### 번외/테스트
@@ -193,6 +204,7 @@ $ streamlit run src/fourthproject/main.py
 # 부하 테스트
 $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:8949/
 ```
+
 
 <br/>
 
@@ -372,7 +384,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 
 ## 🔍최종 검토 및 개선
 
-### 1. **Spark 모니터링 (미완료)**
+### 1. **Spark 모니터링 (완료)**
 
 - **Grafana 대시보드 개선**: Spark 성능 지표 추가 및 대시보드 개선
 - **알림 시스템 설정**: 성능 이상 발생 시 알림 받도록 설정
@@ -380,7 +392,7 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 
 ---
 
-### 2. **Spark Worker Auto Scale Out (미완료)**
+### 2. **Spark Worker Auto Scale Out (완료)**
 
 - **CPU 사용량에 따른 자동 스케일링 구현**
 - **스케일링 정책 설정**: 임계치 초과 시 스케일 아웃
