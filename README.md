@@ -167,6 +167,7 @@ $ git clone git@github.com:DE32FinalTeam2/FourthProject.git
 ### Airflow 실행
 ```bash
 $ cd airflow
+
 $ docker compose up -d
 ```
 
@@ -174,32 +175,42 @@ $ docker compose up -d
 ### java 웹 실행
 ```bash
 # minikube 실행
+
 $ minikube start
+
 $ kubectl apply -f java-deployment.yaml
+
 $ minikube service java-service --url
 ```
 
 #### Spark/Exporter/Prometheus/Grafana 실행
 ```bash
 # 해당 docker-compose.yaml이 있는 디렉토리로 이동
+
 # FourthProject 기준
+
 $ cd moni
+
 $ docker compose up -d
 ```
 
 #### 그 이후 진행사항
 ```bash 
 # FourthProject 기준
+
 $ pip install .
 
 $ streamlit run src/fourthproject/main.py
+
 # streamlit web 접속 (http://localhost:8501)
+
 # manual scale In/Out
 ```
 
 ### 번외/테스트
 ```bash
 # 부하 테스트
+
 $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:8949/
 ```
 
