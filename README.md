@@ -153,7 +153,7 @@
 
 ### 🏗️시스템 아키텍처
 ---
-![image](https://github.com/user-attachments/assets/5d35abed-b4a5-4c5f-aee8-60cdabac13ae)
+![image](https://github.com/user-attachments/assets/93e31f6f-5e83-46f6-bb69-e7b17c1d8c1b)
 
 <br/>
 
