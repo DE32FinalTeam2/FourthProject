@@ -170,13 +170,11 @@ $ cd airflow
 $ docker compose up -d
 ```
 
-### minikube 실행
-```bash
-$ minikube start
-```
 
 ### java 웹 실행
 ```bash
+# minikube 실행
+$ minikube start
 $ kubectl apply -f java-deployment.yaml
 $ minikube service java-service --url
 ```
