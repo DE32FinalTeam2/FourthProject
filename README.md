@@ -219,9 +219,6 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 
 ### ✅테스트 결과
 ---
----
-![image](https://github.com/user-attachments/assets/f1e68337-2fe4-455c-995e-8bb4b0a8acec)
----
 ![image](https://github.com/user-attachments/assets/89fee6a8-c9cd-4f3c-a0ed-b5f75c83c0dc)
 ---
 ![image](https://github.com/user-attachments/assets/a8e05d27-193c-4bf0-9d2d-80621262c06a)
