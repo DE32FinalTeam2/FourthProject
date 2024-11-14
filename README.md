@@ -218,6 +218,10 @@ $ ab -t <테스트 지속 시간(s)> -c <동시 요청 수> http://localhost:894
 ---
 ![image](https://github.com/user-attachments/assets/a8e05d27-193c-4bf0-9d2d-80621262c06a)
 
+![image](https://github.com/user-attachments/assets/ee2f11c3-466a-4559-8abc-4fd74630a7e7)
+
+![image](https://github.com/user-attachments/assets/29f56c0d-66c1-4a15-9dc3-03cef04b8e9e)
+
 <br/>
 
 ## ⌨트러블 슈팅 및 PR
